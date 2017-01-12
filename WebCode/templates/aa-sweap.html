@@ -1,0 +1,59 @@
+{% extends "layout.html" %} {% block content %} {% from "_formhelpers.html" import render_field %}
+<h1>Welcome to the HamRado 360 Antenna Analyser</h1>
+<div class="form_settings">
+    <h2>Antenna Analyzer Start Sweap !!!!</h2>
+    <form action="/aa-sweap" method="post">
+        {{form.csrf}}
+        <table border="1" width="100%">
+            <col style="width:40%">
+            <col style="width:10%">
+            <col style="width:50%">
+            <tr>
+                {{ render_field(form.startFreq,placeholder="Start Frequency")}}
+            </tr>
+            <tr>
+                {{ render_field(form.stopFreq,placeholder="Stop Frequency")}}
+            </tr>
+            <tr>
+                {{ render_field(form.numOfSamples,placeholder="Number of Samples") }}
+            </tr>
+
+            <tr>
+                <td style="text-align: left;" colspan=3>
+                    <p><span>&nbsp;</span><input class="submit" type="submit" name="name" value="Sweap" /></p>
+                </td>
+            </tr>
+        </table>
+        {% if graph %}
+        <table>
+            <tr>
+                <td>
+                    <p> Start Frequency</p>
+                </td>
+                <td>
+                    <span class="center">{{ startFreq }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p> Stop Frequency</p>
+                </td>
+                <td>
+                    {{ stopFreq }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p> Number Of Samples</p>
+                </td>
+                <td>
+                    {{ numSamp }}
+                </td>
+            </tr>
+        </table>
+
+        {{ graph.render() |safe }} {% endif %}
+    </form>
+</div>
+
+{% endblock %}

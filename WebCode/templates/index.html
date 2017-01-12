@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block content %}
+
+<h1>Welcome to the HamRadio 360 Antenna Analyser</h1>
+<p>This is a first attempt at a flask template to control and display the status of the Ham Radio 360 Antenna analyzer. This example is a little contrived and most likely wouldn't be the way one would do things but the idea here was to was to see how far
+    I could push the idea of python based access of the device.</p>
+<div>
+    <h2>Antenna Analyzer</h2>
+    <table>
+        <tr>
+            <td>
+                <span class="left"><img width=300 height=300 src="static/images/analyzerimage.jpg" alt="example graphic" /></span>
+            </td>
+            <td>
+                <p>
+                    Here is the Ham Radio 360 analyzer board built and running. It's available though <a href="http://www.hamrado360.com"> Ham Radio 360.</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}
