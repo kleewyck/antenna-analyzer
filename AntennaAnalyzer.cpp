@@ -133,19 +133,18 @@ boolean AntennaAnalyzer::moreData(char *outBuff) {
       minVSWR = VSWR;
     }
     dtostrf(VSWR, 6, 2, strTmp);
-    
+    index = 0;
     if (firstTime) {
       outBuff[0] = '['; // Stuff the Start of Json into buff
       firstTime = false;
-      index = 1;
-    } else {
-      outBuff[0] = ',';
       index = 1;
     }
     sprintf(&outBuff[index],"{\"CF\":\"%lu\",\"VSWR\":\"%s\",\"FWDV\" :\"%i\",\"REVV\":\"%i\"}", currentFrequency,strTmp,forwardVoltage,reverseVoltage);
     currentStep++;
     if (currentStep > numberOfSteps) {
       strcat(outBuff, "]");
+    } else {
+      strcat(outBuff, ",");
     }
     returnStatus = true;
   } else {
@@ -153,6 +152,5 @@ boolean AntennaAnalyzer::moreData(char *outBuff) {
   }
   return returnStatus;
 }
-
 
 
